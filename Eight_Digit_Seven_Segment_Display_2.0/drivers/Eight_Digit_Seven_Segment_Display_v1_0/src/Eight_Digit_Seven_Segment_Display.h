@@ -76,4 +76,41 @@
  */
 XStatus EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_Reg_SelfTest(void * baseaddr_p);
 
+/**
+ *
+ * Writes a 32 bit bcd-encoded number to the display
+ *
+ *
+ */
+
+void Write_BCD_to_SSD(int baseaddress, int n);
+
+/**
+ *
+ * Write a 32 bit positive integer to the display
+ *
+ *
+ */
+
+void Write_int_to_SSD(int baseaddress, int n);
+
+/**
+ *
+ * Set decimal points
+ *
+ *
+ */
+
+void Set_decimal_points(int baseaddress, int n );
+
+/**
+ *
+ * Helper function to convert integers to bcd
+ *
+ *
+ */
+
+int int2bcd(int n);
+
+
 #endif // EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_H
