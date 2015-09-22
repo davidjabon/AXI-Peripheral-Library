@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER Eight_Digit_Seven_Segment_Display
+	OPTION supported_peripherals = (Eight_Digit_Seven_Segment_Display);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = Eight_Digit_Seven_Segment_Display;
+END DRIVER
