@@ -106,7 +106,7 @@ void Set_decimal_points(int baseaddress, int n );
 /**
  *
  * Helper function to convert integers to bcd
- *
+ * This function will convert non-negative numbers up to 99999999.
  *
  */
 
