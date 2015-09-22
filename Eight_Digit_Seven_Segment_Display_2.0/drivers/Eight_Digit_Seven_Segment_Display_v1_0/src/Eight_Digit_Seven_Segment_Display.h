@@ -80,37 +80,56 @@ XStatus EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_Reg_SelfTest(void * baseaddr_p);
  *
  * Writes a 32 bit bcd-encoded number to the display
  *
+ * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
+ * @param   n is an eight digit bcd encoded decimal number.
+ *          NOTE: if a digit is 0xA through 0xF, the digit will display blank.
+ *          This behavior can be used to turn off four of the digits for example.
+ *
+ * @return  nothing
  *
  */
 
-void Write_BCD_to_SSD(int baseaddress, int n);
+void Write_BCD_to_SSD(u32 BaseAddress, u32 n);
 
 /**
- *
  * Write a 32 bit positive integer to the display
+ * 
+ * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
+ * @param   n is a non-negative integer less than or equal to 99999999.
+ *          The result will always be left padded with 0's.
  *
+ * @return  nothing
  *
  */
 
-void Write_int_to_SSD(int baseaddress, int n);
+void Write_int_to_SSD(u32 BaseAddress, u32 n);
 
 /**
- *
  * Set decimal points
- *
+ * 
+ * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
+ * @param   n is an unsigned integer.  The only thing that matter is the least significant
+ *          bits.  Bit 0 controls the decimal point on the first digit, Bit 1 controls the 
+ *          the decimal point on the second digit etc.  1 = on  0 = off.
+ *          
+ * @return  nothing
  *
  */
 
-void Set_decimal_points(int baseaddress, int n );
+void Set_decimal_points(u32 baseaddress, u32 n );
 
 /**
  *
  * Helper function to convert integers to bcd
  * This function will convert non-negative numbers up to 99999999.
+ * 
+ * @param   n is an unsigned integers less than or equal to 99999999.
+ *          
+ * @return  bcd eight digit representation of n.
  *
  */
 
-int int2bcd(int n);
+u32 int2bcd(u32 n);
 
 
 #endif // EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_H
