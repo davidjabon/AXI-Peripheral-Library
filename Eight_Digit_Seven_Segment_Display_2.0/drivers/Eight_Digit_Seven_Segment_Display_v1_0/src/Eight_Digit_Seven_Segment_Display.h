@@ -1,4 +1,3 @@
-
 #ifndef EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_H
 #define EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_H
 
@@ -94,10 +93,11 @@ void Write_BCD_to_SSD(u32 BaseAddress, u32 n);
 
 /**
  * Write a 32 bit positive integer to the display
- * 
+ *
  * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
  * @param   n is a non-negative integer less than or equal to 99999999.
- *          The result will always be left padded with 0's.
+ *          The result will not be left padded with 0's. Digits to the left
+ *          will be blank.
  *
  * @return  nothing
  *
@@ -105,14 +105,37 @@ void Write_BCD_to_SSD(u32 BaseAddress, u32 n);
 
 void Write_int_to_SSD(u32 BaseAddress, u32 n);
 
+
+
+
+
+/**
+ * Write a 32 bit positive integer to the display
+ *
+ * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
+ * @param   n is a non-negative integer less than or equal to 99999999.
+ *          The result will be left padded with 0's.
+ *
+ * @return  nothing
+ *
+ */
+
+void Write_int_to_SSD_Left_Padded(u32 BaseAddress, u32 n);
+
+
+
+
+
+
+
 /**
  * Set decimal points
- * 
+ *
  * @param   BaseAddress is the base address of the EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY device.
  * @param   n is an unsigned integer.  The only thing that matter is the least significant
- *          bits.  Bit 0 controls the decimal point on the first digit, Bit 1 controls the 
+ *          bits.  Bit 0 controls the decimal point on the first digit, Bit 1 controls the
  *          the decimal point on the second digit etc.  1 = on  0 = off.
- *          
+ *
  * @return  nothing
  *
  */
@@ -123,14 +146,32 @@ void Set_decimal_points(u32 baseaddress, u32 n );
  *
  * Helper function to convert integers to bcd
  * This function will convert non-negative numbers up to 99999999.
- * 
+ *
  * @param   n is an unsigned integers less than or equal to 99999999.
- *          
- * @return  bcd eight digit representation of n.
+ *
+ * @return  bcd eight digit representation of n
  *
  */
 
 u32 int2bcd(u32 n);
+
+
+/**
+ *
+ * Helper function to convert integers to bcd
+ * This function will convert non-negative numbers up to 99999999.
+ * The only difference between this function and int2bcd
+ * is that the result is padded with ones on the left.
+ * For example 382 will be output as 0xFFFFF382. The purpose of
+ * this representation is to display the left-most digits as blanks.
+ *
+ * @param   n is an unsigned integers less than or equal to 99999999.
+ *
+ * @return  bcd eight digit representation of n padded with 1's on the left
+ *
+ */
+
+u32 int2bcd_left_padded_with_ones(u32 n);
 
 
 #endif // EIGHT_DIGIT_SEVEN_SEGMENT_DISPLAY_H
