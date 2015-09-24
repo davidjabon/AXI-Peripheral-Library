@@ -51,6 +51,7 @@ u32 int2bcd_left_padded_with_ones(u32 n)
     u32 digit=0;
     u32 i=0;
     u32 mask = 0xFFFFFFFF;
+    //The mask will be shifted left for each digit in the representation
 
     while( (n_reduced > 0) && (i<8))
     {
