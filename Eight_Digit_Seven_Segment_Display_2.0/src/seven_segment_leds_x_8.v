@@ -15,9 +15,9 @@
 //
 // Revision: 
 // Revision 0.01 - File Created
-// Additional Comments:   Note that the segments are a_to_g with a in position 6, b in position 5 etc
-//                        The ucf should label cathode a to be seg[6], cathode b to be seg[5], etc.
-//			  Note: to turn off decimal point set the corresponding bit low.
+// Additional Comments:   Note that the segments are a_to_g with a in position 0, b in position 1, etc.
+//                        The reverse assignments are commented out to the right.
+//			  To turn off decimal point set the corresponding bit low.
 //
 //////////////////////////////////////////////////////////////////////////////////
 module seven_segment_leds_x_8(
