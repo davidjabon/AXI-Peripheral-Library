@@ -5,7 +5,7 @@
 // 
 // Create Date:    22:04:40 05/25/2015 
 // Design Name: 
-// Module Name:    seven_segment_leds_x_4 
+// Module Name:    seven_segment_leds_x_8 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -36,7 +36,7 @@ reg [20:0] clkdiv;
 
 assign counter = clkdiv[20:18];   //count every 2.6 ms  (with 100 MHz clock)
 
-//quad 4 to 1 MUX
+//4 to 1 MUX
 always @(posedge clk)
     case(counter)
 	0: {digit, decimal_point} = {bcd_in[3:0], ~decimal_points[0]};
