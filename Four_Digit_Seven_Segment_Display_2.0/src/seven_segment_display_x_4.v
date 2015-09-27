@@ -33,10 +33,9 @@ wire [1:0] counter;
 reg [3:0] digit;
 reg [19:0] clkdiv;    
          
+assign counter = clkdiv[19:18];   //count every 2.6 ms  (with 100 MHz clock)
     
-    assign counter = clkdiv[19:18];   //count every 2.6 ms  (with 100 MHz clock)
-    
-    //quad 4 to 1 MUX
+    //4 to 1 MUX
     always @(posedge clk)
         case(counter)
             0: {digit, decimal_point, anode} = {bcd_in[3:0], ~decimal_points[0],  4'b1110};
